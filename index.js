@@ -220,20 +220,13 @@ displayGroupedInfo([
  */
 function validateUserInput(userInput) {
   // Перевіремо умову наявності імені користувача, якщо воно відсутнє виводимо "Помилка: ім'я користувача відсутнє!"
-  console.assert(
-    !userInput.hasOwnProperty("username"),
-    console.warn("Помилка: ім'я користувача відсутнє!")
-  );
+  console.assert(userInput.username, "Помилка: ім'я користувача відсутнє!");
   // Перевіремо умову наявності паролю, якщо він відсутній виводимо "Помилка: пароль відсутній!"
-  console.assert(
-    !userInput.hasOwnProperty("password"),
-    console.warn("Помилка: пароль відсутній!")
-  );
+  console.assert(userInput.password, "Помилка: пароль відсутній!");
   // Перевірка довжини паролю чи менше вона ніж 8,якщо ні виводимо повідомлення про потенційну проблему з текстом "Попередження: пароль має бути довшим за 8 символів!"
-  console.assert(
-    userInput.password.length > 8,
-    console.warn("Попередження: пароль має бути довшим за 8 символів!")
-  );
+  if (userInput.password && userInput.password.length < 8) {
+    console.warn("Попередження: пароль має бути довшим за 8 символів!");
+  }
 }
 
 console.log("Завдання: 8 ==============================");
